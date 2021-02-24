@@ -1,0 +1,24 @@
+.upload-container {
+  width: 800px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 2rem auto;
+  border: 1px dashed rgba(black, 0.2);
+  border-radius: 2rem;
+  transition: 0.2s box-shadow, 0.2s background-color;
+  box-shadow: 0 10px 40px -30px rgba(black, 0.2);
+  &.over {
+    background-color: #2669ff;
+    box-shadow: 0 20px 60px -30px rgba(#2669ff, 1);
+    h2 {
+      color: white;
+    }
+  }
+  h2 {
+    transition: 0.2s color;
+    text-align: center;
+  }
+}
