@@ -1,24 +1,94 @@
+$dashed-border: 1px dashed rgba(black, 0.2);
+$light-blue: rgb(43, 164, 191);
+$light-sky-blue: rgba(211, 247, 255, 0.5);
+$white: #fff;
+$light-grey: rgb(162, 162, 162);
+
+.modal {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem;
+  box-shadow: 0 10px 40px -30px rgba(black, 0.8);
+
+  &__topbar {
+    height: 20px;
+    text-align: end;
+    margin: 10px 10px 10px 0;
+  }
+}
+
+.close-button {
+  border: none;
+  background-color: transparent;
+  color: $light-grey;
+  font-size: 15px;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &:active,
+  &:hover,
+  &:focus {
+    transition: all 300ms ease;
+    color: $light-blue;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 5px;
+  background-color: $light-blue;
+}
+
 .upload-container {
-  width: 800px;
+  width: 100%;
+  padding: 10px;
   height: 400px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin: 2rem auto;
-  border: 1px dashed rgba(black, 0.2);
+  border: $dashed-border;
   border-radius: 2rem;
   transition: 0.2s box-shadow, 0.2s background-color;
   box-shadow: 0 10px 40px -30px rgba(black, 0.2);
   &.over {
-    background-color: #2669ff;
-    box-shadow: 0 20px 60px -30px rgba(#2669ff, 1);
-    h2 {
-      color: white;
-    }
+    background-color: $light-sky-blue;
+    box-shadow: 0 20px 60px -30px rgba($light-sky-blue, 1);
   }
-  h2 {
-    transition: 0.2s color;
-    text-align: center;
+  &__wrapper {
+    padding: 20px;
   }
+  &__image {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  }
+  &__mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 2rem;
+  }
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  transition: 0.2s color;
+  text-align: center;
+  margin: 0;
+}
+.sub-title {
+  font-size: 10px;
+  margin: 0;
+}
+.text--blue {
+  color: $light-blue;
+}
+.text--grey {
+  color: $light-grey;
 }
