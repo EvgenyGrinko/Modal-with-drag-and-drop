@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import './Modal.scss';
 import rainSVG from '../../assets/images/rain.svg';
 import cloudsSVG from '../../assets/images/clouds.svg';
@@ -42,38 +43,40 @@ export const Modal = ({ modalVisible, setModalVisible }: IModalProps) => {
 
     console.log(file)
     return (
-        <div className={`page-wrapper ${!modalVisible ? 'hide' : ''}`} onClick={hideModal}>
-            <div className="modal" onClick={handleModalGeneralClick}>
-                <div className="modal__topbar">
-                    <button className="close-button" onClick={hideModal}>&#10006;</button>
-                </div>
-                <div className="divider" />
-                <div className="upload-container__wrapper">
-                    <div
-                        className={`upload-container ${over ? "over" : ""}`}
-                    >
-                        <img className="upload-container__image" src={`${over ? rainSVG : cloudsSVG}`} alt="" />
-                        <p className='title'>Drop your file here!</p>
-                        <p className='sub-title text--grey'>Note, that only 1 at a time is allowed</p>
-                        <p className='sub-title text--grey'>
-                            and with extensions <span className='text text--blue'>.txt</span> or <span className='text text--blue'>.doc</span>
-                        </p>
-                        <input
-                            style={{ display: "none" }}
-                            type="file"
-                            ref={inputRef}
-                            onChange={onInputChange}
-                        />
+        createPortal(
+            <div className={`page-wrapper${!modalVisible ? ' hide' : ''}`} onClick={hideModal}>
+                <div className="modal" onClick={handleModalGeneralClick}>
+                    <div className="modal__topbar">
+                        <button className="close-button" onClick={hideModal}>&#10006;</button>
+                    </div>
+                    <div className="divider" />
+                    <div className="upload-container__wrapper">
                         <div
-                            onClick={onDropAreaClick}
-                            onDrop={onDrop}
-                            onDragOver={onDropOver}
-                            onDragLeave={onDropLeave}
-                            className="upload-container__mask"
-                        />
+                            className={`upload-container ${over ? "over" : ""}`}
+                        >
+                            <img className="upload-container__image" src={`${over ? rainSVG : cloudsSVG}`} alt="" />
+                            <p className='title'>Drop your file here!</p>
+                            <p className='sub-title text--grey'>Note, that only 1 at a time is allowed</p>
+                            <p className='sub-title text--grey'>
+                                and with extensions <span className='text text--blue'>.txt</span> or <span className='text text--blue'>.doc</span>
+                            </p>
+                            <input
+                                style={{ display: "none" }}
+                                type="file"
+                                ref={inputRef}
+                                onChange={onInputChange}
+                            />
+                            <div
+                                onClick={onDropAreaClick}
+                                onDrop={onDrop}
+                                onDragOver={onDropOver}
+                                onDragLeave={onDropLeave}
+                                className="upload-container__mask"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            , document.body)
     )
 }
