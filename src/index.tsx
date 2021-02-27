@@ -11,9 +11,9 @@ function App() {
         <button
           onClick={() => setModalVisible((prevState) => !prevState)}
         >Upload</button>
-        {modalVisible && <Modal
+        <Modal
           modalVisible={modalVisible}
-          setModalVisible={setModalVisible} />}
+          setModalVisible={setModalVisible} />
       </div>
     </div>
   );
