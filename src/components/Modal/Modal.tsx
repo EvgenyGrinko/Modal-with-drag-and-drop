@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
 import './Modal.scss';
 import rainSVG from '../../assets/images/rain.svg';
 import cloudsSVG from '../../assets/images/clouds.svg';
+import {Portal} from '../Portal';
 
 interface IModalProps {
     modalVisible: boolean,
@@ -43,7 +43,7 @@ export const Modal = ({ modalVisible, setModalVisible }: IModalProps) => {
 
     console.log(file)
     return (
-        createPortal(
+        <Portal>
             <div className={`page-wrapper${!modalVisible ? ' hide' : ''}`} onClick={hideModal}>
                 <div className="modal" onClick={handleModalGeneralClick}>
                     <div className="modal__topbar">
@@ -77,6 +77,6 @@ export const Modal = ({ modalVisible, setModalVisible }: IModalProps) => {
                     </div>
                 </div>
             </div>
-            , document.body)
+        </Portal>
     )
 }
